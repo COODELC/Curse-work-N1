@@ -156,7 +156,7 @@ MigrationBackup/
 .ionide/
 FodyWeavers.xsd
 *.snk
-*.md
+# ВНИМАНИЕ: *.md НЕ игнорируется — README и инструкции должны быть в репозитории
 *.yml
 *.yaml
 .env
