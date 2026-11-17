@@ -184,6 +184,7 @@
               Margin="0,0,0,18">
 
             <TextBox Grid.Column="0"
+                     AutomationProperties.AutomationId="SearchBox"
                      PlaceholderText="Поиск по названию или артикулу"
                      Text="{Binding SearchText, Mode=TwoWay}"
                      Margin="0,0,10,0" />
