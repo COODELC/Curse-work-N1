@@ -198,3 +198,7 @@ tools/**/temp/
 #   - scr/**/*.cs, *.axaml, *.csproj, *.sln
 #   - sql/*.sql
 #   - tools/**/*.ps1
+
+# --- Автобэкапы презентаций и временные кропы скриншотов ---------------------------
+docs/backup_*.pptx
+docs/screens/_crop_*.png
