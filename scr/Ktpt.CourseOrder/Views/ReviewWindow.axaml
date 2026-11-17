@@ -1,0 +1,52 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Ktpt.CourseOrder.Views.ReviewWindow"
+        Title="Отзыв о товаре"
+        Width="520"
+        Height="340"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner"
+        Background="{DynamicResource PageBackgroundBrush}">
+
+	<Grid RowDefinitions="Auto,Auto,*,Auto" Margin="24">
+
+		<TextBlock x:Name="CaptionText"
+                   Grid.Row="0"
+                   FontSize="20"
+                   FontWeight="Bold"
+                   TextWrapping="Wrap"
+                   Margin="0,0,0,6"
+                   Foreground="{DynamicResource PrimaryTextBrush}" />
+
+		<TextBlock x:Name="AuthorText"
+                   Grid.Row="1"
+                   IsVisible="False"
+                   FontSize="13"
+                   TextWrapping="Wrap"
+                   Margin="0,0,0,12"
+                   Foreground="{DynamicResource SecondaryTextBrush}" />
+
+		<TextBox x:Name="ReviewBox"
+                 Grid.Row="2"
+                 AcceptsReturn="True"
+                 TextWrapping="Wrap"
+                 VerticalAlignment="Stretch"
+                 PlaceholderText="Введите текст отзыва" />
+
+		<StackPanel Grid.Row="3"
+                    Orientation="Horizontal"
+                    HorizontalAlignment="Right"
+                    Spacing="10"
+                    Margin="0,16,0,0">
+
+			<Button Content="Отмена" Click="CancelButton_Click" />
+
+			<Button Classes="accent"
+                    Content="Сохранить"
+                    Click="SaveButton_Click" />
+
+		</StackPanel>
+
+	</Grid>
+
+</Window>

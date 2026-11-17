@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<style>
+ html,body{margin:0;padding:0;background:#fff;}
+ #root{position:relative;width:1180px;height:600px;font-family:"Segoe UI",Arial,sans-serif;background:#fff;}
+ .proj{position:absolute;top:14px;border-radius:10px;background:#F5F7FB;border:1.5px solid #6B7280;padding:12px 15px 14px 15px;box-sizing:border-box;width:372px;}
+ .ph{font-size:19px;font-weight:600;color:#1F2937;margin-bottom:9px;}
+ .lvl{font-size:16.5px;line-height:1.45;color:#1F2937;}
+ .lvl b{font-weight:600;}
+ .f{font-family:"Consolas","Cascadia Mono",monospace;font-size:15.5px;color:#374151;}
+ .foot{position:absolute;left:20px;font-size:16.5px;color:#1F2937;line-height:1.4;}
+ .foot b{font-weight:600;}
+</style>
+</head>
+<body>
+<div id="root">
+
+<div class="proj" style="left:14px;">
+  <div class="ph">Ktpt.CourseOrder</div>
+  <div class="lvl"><b>App.axaml, App.axaml.cs</b> — тема, стили, запуск</div>
+  <div class="lvl"><b>Program.cs</b> — точка входа</div>
+  <div class="lvl"><b>Views\</b> — 10 окон и их код</div>
+  <div class="lvl"><b>ViewModels\</b> — Main, Cart, Orders, Manager, Admin, Roles</div>
+  <div class="lvl"><b>Services\</b> — Order, Item, Category, Review, CatalogAdmin</div>
+  <div class="lvl"><b>Models\</b> — Product, CartItem, AppServices</div>
+  <div class="lvl"><b>Converters\</b> — BrushConverters, ImagePathConverter</div>
+  <div class="lvl"><b>Assets\Products\</b> — изображения запчастей</div>
+  <div class="lvl"><b>Connection.txt</b> — строка подключения</div>
+</div>
+
+<div class="proj" style="left:404px;">
+  <div class="ph">Ktpt.CourseOrder.Data</div>
+  <div class="lvl"><b>DbFactory.cs</b> — подключение к базе</div>
+  <div class="lvl"><b>WorkshopDbContext.cs</b> — контекст EF Core</div>
+  <div class="lvl"><b>Entities\Tables.cs</b> — Item, Category, Orders, ItemReview, OrderStatus, Roles, Users</div>
+  <div class="lvl"><b>SeedData.cs</b> — справочники и демоданные</div>
+  <div class="lvl"><b>SchemaUpgrade.cs</b> — обновление схемы</div>
+</div>
+
+<div class="proj" style="left:794px;">
+  <div class="ph">Ktpt.CourseOrder.Auth</div>
+  <div class="lvl"><b>AuthService.cs</b> — вход и смена роли</div>
+  <div class="lvl"><b>Permissions.cs</b> — права по ролям</div>
+  <div class="lvl"><b>AppUser.cs</b> — пользователь системы</div>
+  <div class="lvl"><b>AuthSession.cs</b> — текущая сессия</div>
+  <div class="lvl"><b>AuthWindow.axaml</b> — окно входа</div>
+</div>
+
+<div class="foot" style="top:498px;">
+  Решение <b>Ktpt.CourseOrder.sln</b> содержит три проекта: интерфейс и бизнес-логика, доступ к данным, авторизация.
+</div>
+<div class="foot" style="top:536px;">
+  Разделение по проектам гарантирует, что слой доступа к данным не используется напрямую из разметки окон.
+</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Ktpt.CourseOrder.Views.AdminWindow"
+        Title="Управление магазином"
+        Width="1080"
+        Height="680"
+        Background="{DynamicResource PageBackgroundBrush}">
+
+	<Grid RowDefinitions="Auto,*" Margin="24">
+
+		<StackPanel Grid.Row="0" Spacing="8" Margin="0,0,0,16">
+
+			<Border Background="{DynamicResource HeaderGradientBrush}"
+                    CornerRadius="14"
+                    Padding="20,16">
+
+				<TextBlock Text="Управление магазином"
+                           FontSize="26"
+                           FontWeight="Bold"
+                           Foreground="#FFFFFF" />
+
+			</Border>
+
+			<TextBlock Text="{Binding StatusText}"
+                       TextWrapping="Wrap"
+                       Foreground="{DynamicResource SecondaryTextBrush}" />
+		</StackPanel>
+
+		<TabControl Grid.Row="1">
+
+			<!-- Товары -->
+			<TabItem Header="Товары">
+				<Grid RowDefinitions="Auto,*" Margin="16">
+
+					<Grid Grid.Row="0"
+                          ColumnDefinitions="*,*,*,*,Auto,Auto,Auto"
+                          Margin="0,0,0,16">
+
+						<TextBox Grid.Column="0"
+                                 PlaceholderText="Наименование"
+                                 Text="{Binding ItemName, Mode=TwoWay}"
+                                 Margin="0,0,8,0" />
+
+						<TextBox Grid.Column="1"
+                                 PlaceholderText="Артикул"
+                                 Text="{Binding ItemArticule, Mode=TwoWay}"
+                                 Margin="0,0,8,0" />
+
+						<ComboBox Grid.Column="2"
+                                  MinWidth="180"
+                                  PlaceholderText="Категория"
+                                  ItemsSource="{Binding Categories}"
+                                  SelectedItem="{Binding SelectedItemCategory}"
+                                  Margin="0,0,8,0" />
+
+						<TextBox Grid.Column="3"
+                                 MinWidth="90"
+                                 PlaceholderText="Цена"
+                                 Text="{Binding ItemPrice, Mode=TwoWay}"
+                                 Margin="0,0,8,0" />
+
+						<TextBox Grid.Column="4"
+                                 MinWidth="80"
+                                 PlaceholderText="Остаток"
+                                 Text="{Binding ItemQuantity, Mode=TwoWay}"
+                                 Margin="0,0,8,0" />
+
+						<Button Grid.Column="5"
+                                Content="Добавить"
+                                Margin="0,0,8,0"
+                                Command="{Binding AddItemCommand}" />
+
+						<Button Grid.Column="6"
+                                Content="Сохранить"
+                                Command="{Binding UpdateItemCommand}" />
+
+					</Grid>
+
+					<Grid Grid.Row="1" ColumnDefinitions="*,Auto">
+
+						<ListBox Grid.Column="0"
+                                 ItemsSource="{Binding Items}"
+                                 Background="Transparent"
+                                 BorderThickness="0"
+                                 SelectedItem="{Binding SelectedItem}">
+
+							<ListBox.ItemTemplate>
+								<DataTemplate>
+									<Border Padding="10"
+                                            Margin="0,0,0,6"
+                                            CornerRadius="8"
+                                            Background="{DynamicResource CardBackgroundBrush}"
+                                            BorderBrush="{DynamicResource BorderBrush}"
+                                            BorderThickness="1">
+										<Grid ColumnDefinitions="*,Auto,Auto,Auto">
+											<TextBlock Grid.Column="0"
+                                                       Text="{Binding Name_Item}"
+                                                       VerticalAlignment="Center"
+                                                       Foreground="{DynamicResource PrimaryTextBrush}" />
+
+											<TextBlock Grid.Column="1"
+                                                       Text="{Binding Name_Category}"
+                                                       Width="170"
+                                                       VerticalAlignment="Center"
+                                                       FontSize="13"
+                                                       Foreground="{DynamicResource SecondaryTextBrush}" />
+
+											<TextBlock Grid.Column="2"
+                                                       Text="{Binding Price, StringFormat='{}{0:N2} руб.'}"
+                                                       Width="110"
+                                                       VerticalAlignment="Center"
+                                                       Foreground="{DynamicResource PrimaryTextBrush}" />
+
+											<Button Grid.Column="3"
+                                                    Content="Удалить"
+                                                    Margin="10,0,0,0"
+                                                    Command="{Binding $parent[ListBox].DataContext.DeleteItemCommand}"
+                                                    CommandParameter="{Binding}" />
+										</Grid>
+									</Border>
+								</DataTemplate>
+							</ListBox.ItemTemplate>
+
+						</ListBox>
+
+						<Button Grid.Column="1"
+                                Content="Удалить выбранный"
+                                VerticalAlignment="Top"
+                                Command="{Binding DeleteItemCommand}" />
+
+					</Grid>
+
+				</Grid>
+			</TabItem>
+
+			<!-- Категории -->
+			<TabItem Header="Категории">
+				<Grid RowDefinitions="Auto,*" Margin="16">
+
+					<Grid Grid.Row="0" ColumnDefinitions="*,Auto" Margin="0,0,0,16">
+						<TextBox Grid.Column="0"
+                                 PlaceholderText="Название категории (отделения)"
+                                 Text="{Binding NewCategoryName, Mode=TwoWay}"
+                                 Margin="0,0,8,0" />
+
+						<Button Grid.Column="1"
+                                Content="Добавить категорию"
+                                Command="{Binding AddCategoryCommand}" />
+					</Grid>
+
+					<ListBox Grid.Row="1"
+                             ItemsSource="{Binding Categories}"
+                             Background="Transparent"
+                             BorderThickness="0">
+
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<Border Padding="10"
+                                        Margin="0,0,0,6"
+                                        CornerRadius="8"
+                                        Background="{DynamicResource CardBackgroundBrush}"
+                                        BorderBrush="{DynamicResource BorderBrush}"
+                                        BorderThickness="1">
+									<Grid ColumnDefinitions="*,Auto">
+										<TextBlock Grid.Column="0"
+                                                   Text="{Binding Name}"
+                                                   VerticalAlignment="Center"
+                                                   Foreground="{DynamicResource PrimaryTextBrush}" />
+
+										<Button Grid.Column="1"
+                                                Content="Удалить"
+                                                Command="{Binding $parent[ListBox].DataContext.DeleteCategoryCommand}"
+                                                CommandParameter="{Binding}" />
+									</Grid>
+								</Border>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+
+					</ListBox>
+
+				</Grid>
+			</TabItem>
+
+			<!-- Пользователи -->
+			<TabItem Header="Пользователи">
+				<Grid RowDefinitions="Auto,*" Margin="16">
+
+					<Grid Grid.Row="0" ColumnDefinitions="*,Auto,Auto" Margin="0,0,0,16">
+						<ComboBox Grid.Column="0"
+                                  MinWidth="240"
+                                  PlaceholderText="Пользователь"
+                                  ItemsSource="{Binding Users}"
+                                  SelectedItem="{Binding SelectedUser}"
+                                  Margin="0,0,8,0" />
+
+						<ComboBox Grid.Column="1"
+                                  MinWidth="200"
+                                  ItemsSource="{Binding Roles}"
+                                  SelectedItem="{Binding SelectedRole}"
+                                  Margin="0,0,8,0" />
+
+						<Button Grid.Column="2"
+                                Content="Назначить роль"
+                                Command="{Binding ChangeRoleCommand}" />
+					</Grid>
+
+					<ListBox Grid.Row="1"
+                             ItemsSource="{Binding Users}"
+                             Background="Transparent"
+                             BorderThickness="0">
+
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<Border Padding="10"
+                                        Margin="0,0,0,6"
+                                        CornerRadius="8"
+                                        Background="{DynamicResource CardBackgroundBrush}"
+                                        BorderBrush="{DynamicResource BorderBrush}"
+                                        BorderThickness="1">
+									<Grid ColumnDefinitions="*,*,*">
+										<TextBlock Grid.Column="0"
+                                                   Text="{Binding FullName}"
+                                                   VerticalAlignment="Center"
+                                                   Foreground="{DynamicResource PrimaryTextBrush}" />
+
+										<TextBlock Grid.Column="1"
+                                                   Text="{Binding Login}"
+                                                   Margin="12,0"
+                                                   VerticalAlignment="Center"
+                                                   FontSize="13"
+                                                   Foreground="{DynamicResource SecondaryTextBrush}" />
+
+										<TextBlock Grid.Column="2"
+                                                   Text="{Binding Role}"
+                                                   VerticalAlignment="Center"
+                                                   FontSize="13"
+                                                   Foreground="{DynamicResource AccentBrush}" />
+									</Grid>
+								</Border>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+
+					</ListBox>
+
+				</Grid>
+			</TabItem>
+
+			<!-- Отчёт -->
+			<TabItem Header="Отчёт">
+				<Grid RowDefinitions="Auto,Auto,*" Margin="16">
+
+					<Button Grid.Row="0"
+                            Content="Построить отчёт"
+                            HorizontalAlignment="Left"
+                            Margin="0,0,0,16"
+                            Command="{Binding BuildReportCommand}" />
+
+					<TextBlock Grid.Row="1"
+                               Text="{Binding ReportText}"
+                               TextWrapping="Wrap"
+                               Margin="0,0,0,16"
+                               FontSize="15"
+                               Foreground="{DynamicResource PrimaryTextBrush}" />
+
+					<ListBox Grid.Row="2"
+                             ItemsSource="{Binding ReportLines}"
+                             Background="Transparent"
+                             BorderThickness="0">
+
+						<ListBox.ItemTemplate>
+							<DataTemplate>
+								<Border Padding="10"
+                                        Margin="0,0,0,6"
+                                        CornerRadius="8"
+                                        Background="{DynamicResource CardBackgroundBrush}"
+                                        BorderBrush="{DynamicResource BorderBrush}"
+                                        BorderThickness="1">
+									<Grid ColumnDefinitions="*,Auto">
+										<TextBlock Grid.Column="0"
+                                                   Text="{Binding Title}"
+                                                   VerticalAlignment="Center"
+                                                   Foreground="{DynamicResource PrimaryTextBrush}" />
+
+										<TextBlock Grid.Column="1"
+                                                   Text="{Binding Value}"
+                                                   VerticalAlignment="Center"
+                                                   Foreground="{DynamicResource AccentBrush}" />
+									</Grid>
+								</Border>
+							</DataTemplate>
+						</ListBox.ItemTemplate>
+
+					</ListBox>
+
+				</Grid>
+			</TabItem>
+
+		</TabControl>
+
+	</Grid>
+
+</Window>

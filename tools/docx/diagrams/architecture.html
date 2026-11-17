@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<style>
+ html,body{margin:0;padding:0;background:#fff;}
+ #root{position:relative;width:1050px;height:1010px;font-family:"Segoe UI",Arial,sans-serif;background:#fff;}
+ .title{position:absolute;left:0;right:0;top:30px;text-align:center;font-size:26px;font-weight:700;color:#111827;}
+ .block{position:absolute;left:62px;right:62px;background:#F3F4F6;border:2px solid #D1D5DB;border-radius:14px;box-sizing:border-box;padding:20px 22px 22px 22px;}
+ .bt{text-align:center;font-size:23px;font-weight:700;color:#1F2937;margin-bottom:16px;}
+ .cards{display:flex;justify-content:space-between;align-items:stretch;}
+ .card{flex:0 1 45%;text-align:center;font-size:19px;color:#1F2937;background:#F9FAFB;border:2px solid #D1D5DB;border-radius:10px;padding:14px 10px;line-height:1.25;}
+ .tbl{flex:0 1 auto;text-align:center;font-size:19px;color:#1F2937;background:#F9FAFB;border:2px solid #D1D5DB;border-radius:10px;padding:14px 18px;line-height:1.25;}
+ .more{font-size:19px;color:#1F2937;margin-left:12px;align-self:center;}
+ svg{position:absolute;left:0;top:0;}
+</style>
+</head>
+<body>
+<div id="root">
+  <div class="title">Архитектура ИС «Магазин автозапчастей»</div>
+
+  <svg width="1050" height="1010">
+    <defs>
+      <marker id="ar" markerWidth="12" markerHeight="12" refX="9" refY="4" orient="auto">
+        <path d="M0,0 L9,4 L0,8 Z" fill="#9CA3AF"/>
+      </marker>
+    </defs>
+    <line x1="525" y1="295" x2="525" y2="348" stroke="#9CA3AF" stroke-width="2.2" marker-end="url(#ar)"/>
+    <line x1="525" y1="520" x2="525" y2="573" stroke="#9CA3AF" stroke-width="2.2" marker-end="url(#ar)"/>
+    <line x1="525" y1="745" x2="525" y2="793" stroke="#9CA3AF" stroke-width="2.2" marker-end="url(#ar)"/>
+  </svg>
+
+  <!-- 1. Интерфейс -->
+  <div class="block" style="top:130px;height:165px;">
+    <div class="bt">Интерфейс пользователя (Avalonia)</div>
+    <div class="cards">
+      <div class="card">Окно выбора автозапчастей</div>
+      <div class="card">Окно оформления заказа</div>
+    </div>
+  </div>
+
+  <!-- 2. ViewModel -->
+  <div class="block" style="top:355px;height:165px;">
+    <div class="bt">Логика окон (ViewModel)</div>
+    <div class="cards">
+      <div class="card">Управление каталогом и поиск</div>
+      <div class="card">Ввод данных и расчёт цены</div>
+    </div>
+  </div>
+
+  <!-- 3. Сервисы -->
+  <div class="block" style="top:580px;height:165px;">
+    <div class="bt">Бизнес-правила (Сервисы)</div>
+    <div class="cards">
+      <div class="card">Расчёт скидок и стоимости</div>
+      <div class="card">Оформление и отмена заказа</div>
+    </div>
+  </div>
+
+  <!-- 4. Доступ к данным -->
+  <div class="block" style="top:800px;height:190px;">
+    <div class="bt">Доступ к данным (EF Core Context)</div>
+    <div class="cards" style="justify-content:center;align-items:center;">
+      <span class="tbl">Item</span>
+      <span class="tbl" style="margin-left:12px;">Orders</span>
+      <span class="tbl" style="margin-left:12px;">Roles</span>
+      <span class="tbl" style="margin-left:12px;">Users</span>
+      <span class="more">…и др. таблицы</span>
+    </div>
+  </div>
+</div>
+</body>
+</html>

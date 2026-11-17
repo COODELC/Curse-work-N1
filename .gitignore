@@ -1,0 +1,190 @@
+# ============================================================================
+#  .gitignore — Курсовой проект N1 (Ktpt.CourseOrder)
+#  ВАЖНО: этот файл — единственный источник правил игнорирования для ВСЕГО проекта.
+#  Ранее здесь лежал Cursework.gitignore, а в scr/Ktpt.CourseOrder — копия
+#  стандартного VisualStudio.gitignore. Теперь правила объединены здесь.
+# ============================================================================
+
+# --- Инструменты и временные файлы, добавленные при работе над проектом ---
+.git-tools/
+.git_backup/
+*.zip
+*.7z
+
+# --- Сборка .NET -------------------------------------------------
+[Bb]in/
+[Oo]bj/
+[Oo]ut/
+[Ll]og/
+[Ll]ogs/
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+[Aa][Rr][Mm]/
+[Aa][Rr][Mm]64/
+publish/
+artifacts/
+*.binlog
+*.user
+*.suo
+*.rsuser
+*.userosscache
+*.sln.docstates
+*.userprefs
+.vs/
+.vscode/
+.idea/
+*.lock.json
+project.lock.json
+project.fragment.lock.json
+*.nuget.props
+*.nuget.targets
+packages/
+!**/packages/build/
+*.nupkg
+*.snupkg
+node_modules/
+*.pdb
+*.ilk
+*.meta
+*.obj
+*.iobj
+*.pch
+*.rsp
+*.sbr
+*.tlb
+*.tli
+*.tlh
+*.tmp
+*.tmp_proj
+*_wpftmp.csproj
+*.log
+*.vspscc
+*.vssscc
+*.builds
+*.pidb
+*.svclog
+*.scc
+Generated\ Files/
+Generated_Code/
+_UpgradeReport_Files/
+Backup*/
+UpgradeLog*.XML
+UpgradeLog*.htm
+TestResults/
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+coverage*.json
+coverage*.xml
+coverage*.info
+*.coverage
+*.coveragexml
+*.dotCover
+.axoCover/*
+!.axoCover/settings.json
+benchmarkDotnet.Artifacts/
+BenchmarkDotNet.Artifacts/
+_ReSharper*/
+*.[Rr]e[Ss]harper
+*.DotSettings.user
+*.ncb
+*.ncd
+*.ndp
+*.cache
+*.pidb
+*.VisualState.xml
+TestResult.xml
+nunit-*.xml
+_Chutzpah*
+*.apk
+*.aab
+*.ipa
+*.appx
+*.appxbundle
+*.appxupload
+*.hprof
+*.dbmdl
+*.dbproj.schemaview
+*.jfm
+*.pfx
+*.publishsettings
+*.publishproj
+*.[Pp]ublish.xml
+*.azurePubxml
+*.pubxml
+*.mdf
+*.ldf
+*.ndf
+*.rdl.data
+*.bim.layout
+*.bim_*.settings
+*.rptproj.rsuser
+*- [Bb]ackup.rdl
+*- [Bb]ackup ([0-9]).rdl
+*- [Bb]ackup ([0-9][0-9]).rdl
+FakesAssemblies/
+*.GhostDoc.xml
+*.ntvs_analysis.dat
+*.cr/personal
+*.plg
+*.opt
+*.vbw
+*.CSSClient/GeneratedArtifacts
+*.DesktopClient/GeneratedArtifacts
+*.DesktopClient/ModelManifest.xml
+*.Server/GeneratedArtifacts
+*.Server/ModelManifest.xml
+_Pvt_Extensions
+.paket/paket.exe
+paket-files/
+.fake/
+__pycache__/
+*.pyc
+*.tss
+*.jmconfig
+*.btp.cs
+*.btm.cs
+*.xsd.cs
+OpenCover/
+ASALocalRun/
+*.nvuser
+*.mfractor/
+.localhistory/
+healthchecksdb
+MigrationBackup/
+.ionide/
+FodyWeavers.xsd
+*.snk
+*.md
+*.yml
+*.yaml
+.env
+.env.*
+
+# --- Рабочие документы: временные файлы Office ---------------------------
+~$*
+*.asd
+*.wbk
+*.tmp
+Thumbs.db
+Desktop.ini
+.DS_Store
+
+# --- Скриншоты и временные файлы инструментов ---------------------------
+docs/_tmp_figctx.ps1
+tools/**/tmp/
+tools/**/temp/
+*.bak
+*.log
+*.trace
+
+# --- ВАЖНО: итоговые файлы курсовой НЕ игнорируются -----------------------
+# Следующие файлы обязаны попасть в репозиторий:
+#   - *.docx (пояснительная записка, инструкция)
+#   - *.pptx (презентация)
+#   - *.drawio (диаграммы)
+#   - docs/diagrams/*.png, docs/deck_png/*.png, docs/screens/*.png
+#   - scr/**/*.cs, *.axaml, *.csproj, *.sln
+#   - sql/*.sql
+#   - tools/**/*.ps1

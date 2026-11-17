@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<style>
+ html,body{margin:0;padding:0;background:#FFFFFF;}
+ #root{width:1080px;height:700px;background:#FFFFFF;font-family:"Consolas","Cascadia Mono",monospace;}
+ .term{margin:20px;background:#F7F9FC;border:1.6px solid #C8D3E0;border-radius:6px;padding:20px 24px;box-sizing:border-box;}
+ .ok{color:#2E7D32;font-size:18px;line-height:1.55;}
+ .hd{color:#1F2937;font-size:18px;line-height:1.55;font-weight:bold;}
+ .sm{color:#0B5CAD;font-size:18px;line-height:1.55;}
+</style>
+</head>
+<body>
+<div id="root">
+<div class="term">
+<div class="hd">Проверка покупки через интерфейс, PID=17132</div>
+<div class="hd">=== 1. Количество заказов до покупки ===</div>
+<div class="sm">  Заказов у пользователя: 0</div>
+<div class="hd">=== 2. Добавление товара в корзину ===</div>
+<div class="ok">  [OK]   Кнопка «Добавить в корзину» есть в каталоге — кнопок: 12</div>
+<div class="hd">=== 3. Корзина ===</div>
+<div class="ok">  [OK]   Окно корзины открылось</div>
+<div class="ok">  [OK]   Итоговая сумма в корзине рассчитана — Итого: 7 800,00 руб.</div>
+<div class="ok">  [OK]   Кнопка «Оплатить» доступна — кнопок: 1</div>
+<div class="hd">=== 4. Оплата ===</div>
+<div class="ok">  [OK]   После оплаты показано подтверждение с номером заказа</div>
+<div class="sm">         — Заказ № 61 оформлен. Позиций: 1. Сумма: 5 850,00 руб.</div>
+<div class="sm">           Применена скидка 25%, выгода 1 950,00 руб.</div>
+<div class="hd">=== 5. Заказ появился в «Моих заказах» ===</div>
+<div class="ok">  [OK]   Количество заказов увеличилось на 1 — было 0, стало 1</div>
+<div class="ok">  [OK]   Новый заказ в статусе «Оформление заказа»</div>
+<div class="hd">=== 6. Отмена заказа ===</div>
+<div class="ok">  [OK]   Заказ переведён в статус «Отменён»</div>
+<div class="hd">ИТОГО: успешно 8, провалено 0</div>
+</div>
+</div>
+</body>
+</html>

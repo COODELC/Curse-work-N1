@@ -1,0 +1,68 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:converters="using:Ktpt.CourseOrder.Converters"
+             x:Class="Ktpt.CourseOrder.App"
+             RequestedThemeVariant="Light">
+
+	<Application.Styles>
+		<FluentTheme />
+	</Application.Styles>
+
+	<Application.Resources>
+		<ResourceDictionary>
+
+			<!-- Фон приложения: мягкий многоцветный градиент -->
+			<LinearGradientBrush x:Key="PageBackgroundBrush" StartPoint="0%,0%" EndPoint="100%,100%">
+				<GradientStop Offset="0" Color="#EEF2FF" />
+				<GradientStop Offset="0.45" Color="#F8FAFC" />
+				<GradientStop Offset="1" Color="#FDF2F8" />
+			</LinearGradientBrush>
+
+			<!-- Шапка окна -->
+			<LinearGradientBrush x:Key="HeaderGradientBrush" StartPoint="0%,0%" EndPoint="100%,0%">
+				<GradientStop Offset="0" Color="#4F46E5" />
+				<GradientStop Offset="0.5" Color="#7C3AED" />
+				<GradientStop Offset="1" Color="#DB2777" />
+			</LinearGradientBrush>
+
+			<!-- Акцентные кнопки -->
+			<LinearGradientBrush x:Key="AccentGradientBrush" StartPoint="0%,0%" EndPoint="100%,100%">
+				<GradientStop Offset="0" Color="#4F46E5" />
+				<GradientStop Offset="1" Color="#7C3AED" />
+			</LinearGradientBrush>
+
+			<!-- Кнопка добавления в корзину -->
+			<LinearGradientBrush x:Key="SuccessGradientBrush" StartPoint="0%,0%" EndPoint="100%,100%">
+				<GradientStop Offset="0" Color="#059669" />
+				<GradientStop Offset="1" Color="#10B981" />
+			</LinearGradientBrush>
+
+			<!-- Подложка информационных плашек -->
+			<SolidColorBrush x:Key="InfoBackgroundBrush" Color="#E0F2FE" />
+			<SolidColorBrush x:Key="InfoBorderBrush" Color="#7DD3FC" />
+
+			<SolidColorBrush x:Key="CardBackgroundBrush" Color="#FFFFFF" />
+			<SolidColorBrush x:Key="PrimaryTextBrush" Color="#111827" />
+			<SolidColorBrush x:Key="SecondaryTextBrush" Color="#64748B" />
+			<SolidColorBrush x:Key="BorderBrush" Color="#E2E8F0" />
+			<SolidColorBrush x:Key="AccentBrush" Color="#4F46E5" />
+			<SolidColorBrush x:Key="AccentHoverBrush" Color="#4338CA" />
+			<SolidColorBrush x:Key="TextOnAccentBrush" Color="#FFFFFF" />
+			<SolidColorBrush x:Key="SuccessBrush" Color="#059669" />
+			<SolidColorBrush x:Key="ErrorBrush" Color="#E11D48" />
+			<SolidColorBrush x:Key="WarningBrush" Color="#D97706" />
+			<SolidColorBrush x:Key="InfoBrush" Color="#0284C7" />
+
+			<!-- Цвет плашки статуса заказа -->
+			<converters:StatusBrushConverter x:Key="StatusBrushConverter" />
+
+			<!-- Цвет плашки категории товара -->
+			<converters:CategoryBrushConverter x:Key="CategoryBrushConverter" />
+
+			<!-- Загрузка картинки товара по пути из базы -->
+			<converters:ImagePathConverter x:Key="ImagePathConverter" />
+
+		</ResourceDictionary>
+	</Application.Resources>
+
+</Application>

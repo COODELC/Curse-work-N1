@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<style>
+ html,body{margin:0;padding:0;background:#FFFFFF;}
+ #root{width:1180px;height:920px;background:#FFFFFF;font-family:"Consolas","Cascadia Mono",monospace;}
+ .code{padding:24px 28px;box-sizing:border-box;}
+ pre{margin:0;font-size:19px;line-height:1.42;color:#1F2937;white-space:pre;}
+ .kw{color:#0B5CAD;}
+ .ty{color:#7C3AED;}
+ .st{color:#B45309;}
+ .cm{color:#6B7280;}
+ .ln{color:#9CA3AF;user-select:none;}
+</style>
+</head>
+<body>
+<div id="root">
+<div class="code"><pre><span class="ln"> 1 </span><span class="cm">// Файл: scr/Ktpt.CourseOrder.Data/DbFactory.cs</span>
+<span class="ln"> 2 </span><span class="cm">// Фабрика контекста: SQL Server или локальный файл SQLite</span>
+<span class="ln"> 3 </span><span class="kw">public sealed class</span> <span class="ty">DbFactory</span>
+<span class="ln"> 4 </span>{
+<span class="ln"> 5 </span>    <span class="kw">private readonly string</span> _connectionString;
+<span class="ln"> 6 </span>
+<span class="ln"> 7 </span>    <span class="kw">public bool</span> <span class="ty">IsLocalFileDatabase</span> =&gt;
+<span class="ln"> 8 </span>        _connectionString.StartsWith(<span class="st">"Data Source="</span>,
+<span class="ln"> 9 </span>            StringComparison.OrdinalIgnoreCase);
+<span class="ln">10 </span>
+<span class="ln">11 </span>    <span class="kw">public</span> <span class="ty">WorkshopDbContext</span> <span class="ty">Create</span>()
+<span class="ln">12 </span>    {
+<span class="ln">13 </span>        <span class="kw">var</span> builder = <span class="kw">new</span> <span class="ty">DbContextOptionsBuilder</span>&lt;<span class="ty">WorkshopDbContext</span>&gt;();
+<span class="ln">14 </span>
+<span class="ln">15 </span>        <span class="kw">if</span> (IsLocalFileDatabase)
+<span class="ln">16 </span>        {
+<span class="ln">17 </span>            <span class="kw">var</span> path = Path.Combine(AppContext.BaseDirectory, <span class="st">"autoshop.db"</span>);
+<span class="ln">18 </span>            builder.UseSqlite($<span class="st">"Data Source={path}"</span>);
+<span class="ln">19 </span>        }
+<span class="ln">20 </span>        <span class="kw">else</span>
+<span class="ln">21 </span>        {
+<span class="ln">22 </span>            builder.UseSqlServer(_connectionString);
+<span class="ln">23 </span>        }
+<span class="ln">24 </span>
+<span class="ln">25 </span>        <span class="kw">return new</span> <span class="ty">WorkshopDbContext</span>(builder.Options);
+<span class="ln">26 </span>    }
+<span class="ln">27 </span>}
+<span class="ln">28 </span>
+<span class="ln">29 </span><span class="cm">// Файл: scr/Ktpt.CourseOrder/Connection.txt</span>
+<span class="ln">30 </span>Server=(localdb)\Ander.;Database=cursevork;Trusted_Connection=True;</span>
+<span class="ln">31 </span>Encrypt=True;TrustServerCertificate=True;Connect Timeout=5</pre>
+</div>
+</div>
+</body>
+</html>

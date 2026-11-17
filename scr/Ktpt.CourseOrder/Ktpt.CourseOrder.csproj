@@ -1,0 +1,57 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+	<PropertyGroup>
+		<OutputType>WinExe</OutputType>
+		<TargetFramework>net10.0</TargetFramework>
+		<Nullable>enable</Nullable>
+
+		<!-- Автоматическое подключение базовых библиотек C# -->
+		<ImplicitUsings>enable</ImplicitUsings>
+
+		<ApplicationManifest>app.manifest</ApplicationManifest>
+
+		<!-- Имя сборки и корневое пространство имён проекта -->
+		<AssemblyName>Ktpt.CourseOrder</AssemblyName>
+		<RootNamespace>Ktpt.CourseOrder</RootNamespace>
+
+		<!-- Классические привязки Binding вместо строгой compile-time проверки -->
+		<AvaloniaUseCompiledBindingsByDefault>false</AvaloniaUseCompiledBindingsByDefault>
+
+		<!-- Подключайте только после добавления файла Assets/app.ico -->
+		<!-- <ApplicationIcon>Assets/app.ico</ApplicationIcon> -->
+	</PropertyGroup>
+
+	<ItemGroup>
+
+		<PackageReference Include="Avalonia" Version="12.1.6" />
+		<PackageReference Include="Avalonia.Desktop" Version="12.1.5" />
+		<PackageReference Include="Avalonia.Themes.Fluent" Version="12.1.5" />
+		<PackageReference Include="Avalonia.Fonts.Inter" Version="12.1.5" />
+		<PackageReference Include="AvaloniaUI.DiagnosticsSupport" Version="2.2.3">
+			<IncludeAssets Condition="'$(Configuration)' != 'Debug'">None</IncludeAssets>
+			<PrivateAssets Condition="'$(Configuration)' != 'Debug'">All</PrivateAssets>
+		</PackageReference>
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.2" />
+
+		<!-- Расширения LINQ Entity Framework Core используются в сервисном слое -->
+		<PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.12" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<Folder Include="Assets\Products\" />
+	</ItemGroup>
+
+	<ItemGroup>
+		<!-- Ресурсы Avalonia: изображения, иконки и другие файлы из Assets -->
+		<AvaloniaResource Include="Assets\**"/>
+
+		<!-- Модуль данных: сущности и контекст Entity Framework Core -->
+		<ProjectReference Include="..\Ktpt.CourseOrder.Data\Ktpt.CourseOrder.Data.csproj" />
+
+		<!-- Модуль авторизации и разграничения прав доступа -->
+		<ProjectReference Include="..\Ktpt.CourseOrder.Auth\Ktpt.CourseOrder.Auth.csproj" />
+
+		<None Update="Connection.txt" CopyToOutputDirectory="PreserveNewest" CopyToPublishDirectory="PreserveNewest" />
+	</ItemGroup>
+
+</Project>

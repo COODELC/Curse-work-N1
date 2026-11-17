@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<style>
+ html,body{margin:0;padding:0;background:#fff;}
+ #root{position:relative;width:1500px;height:1450px;font-family:"Segoe UI",Arial,sans-serif;background:#fff;}
+ .lay{position:absolute;border-radius:12px;padding:16px 20px 20px 20px;box-sizing:border-box;}
+ .lh{font-size:20px;font-weight:700;margin-bottom:12px;}
+ .box{border-radius:8px;padding:8px 12px;margin-bottom:8px;font-size:15.5px;background:#fff;box-shadow:0 1px 4px rgba(0,0,0,.14);border:1px solid #E5E7EB;}
+ .box:last-child{margin-bottom:0;}
+ .box b{font-weight:700;}
+ .s{background:#EEF2FF;border:2px solid #4F46E5;}
+ .s .lh{color:#3730A3;}
+ .m{background:#FDF2F8;border:2px solid #DB2777;}
+ .m .lh{color:#9D174D;}
+ .b{background:#ECFDF5;border:2px solid #059669;}
+ .b .lh{color:#065F46;}
+ .d{background:#F0F9FF;border:2px solid #0891B2;}
+ .d .lh{color:#0E7490;}
+ svg{position:absolute;left:0;top:0;}
+</style>
+</head>
+<body>
+<div id="root">
+<svg width="1500" height="1450">
+  <defs>
+    <marker id="a" markerWidth="11" markerHeight="11" refX="9" refY="4" orient="auto">
+      <path d="M0,0 L9,4 L0,8" fill="none" stroke="#4B5563" stroke-width="1.5"/>
+    </marker>
+  </defs>
+  <line x1="500" y1="455" x2="500" y2="497" stroke="#4B5563" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="500" y1="832" x2="500" y2="932" stroke="#4B5563" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="920" y1="1080" x2="956" y2="1080" stroke="#4B5563" stroke-width="1.5" marker-end="url(#a)"/>
+  <line x1="1195" y1="1290" x2="1195" y2="1326" stroke="#4B5563" stroke-width="1.5" marker-end="url(#a)"/>
+</svg>
+
+<div class="lay s" style="left:80px;top:30px;width:840px;">
+  <div class="lh">Представление (Views, XAML)</div>
+  <div class="box"><b>MainWindow</b> — каталог товаров, поиск, фильтр по категориям, корзина</div>
+  <div class="box"><b>ProductDetailsWindow</b> — карточка товара, описание, отзывы</div>
+  <div class="box"><b>CartWindow</b> — состав корзины, итоговая сумма, оформление</div>
+  <div class="box"><b>ReviewsWindow / ReviewWindow</b> — список отзывов и форма отзыва</div>
+  <div class="box"><b>OrdersWindow</b> — мои заказы</div>
+  <div class="box"><b>ManagerWindow</b> — обработка заказов сотрудником</div>
+  <div class="box"><b>AdminWindow</b> — управление товарами, категориями, пользователями</div>
+  <div class="box"><b>ProfileWindow / RolesWindow</b> — профиль пользователя и роли</div>
+</div>
+
+<div class="lay m" style="left:80px;top:500px;width:840px;">
+  <div class="lh">Модель представления (ViewModels)</div>
+  <div class="box"><b>MainViewModel</b> — каталог, поиск, фильтрация, добавление в корзину, команды переходов</div>
+  <div class="box"><b>CartViewModel</b> — позиции корзины и пересчёт суммы</div>
+  <div class="box"><b>OrdersViewModel</b> — загрузка истории заказов пользователя</div>
+  <div class="box"><b>ManagerViewModel</b> — все заказы, смена статуса, отмена заказа</div>
+  <div class="box"><b>AdminViewModel / RolesViewModel</b> — управление данными каталога и ролями</div>
+</div>
+
+<div class="lay b" style="left:80px;top:935px;width:840px;">
+  <div class="lh">Сервисы предметной области (Services)</div>
+  <div class="box"><b>OrderService</b> — оформление заказа, скидка 25 %, списание остатка, смена статуса, отмена с возвратом</div>
+  <div class="box"><b>ItemService</b> — каталог товаров, категории, отзывы товара</div>
+  <div class="box"><b>CategoryService</b> — справочник категорий</div>
+  <div class="box"><b>ReviewService</b> — добавление отзыва с фиксацией автора</div>
+  <div class="box"><b>CatalogAdminService</b> — изменение состава каталога</div>
+  <div class="box"><b>AuthService</b> — вход, проверка пароля, роли и права</div>
+</div>
+
+<div class="lay d" style="left:960px;top:935px;width:470px;">
+  <div class="lh">Доступ к данным (Data)</div>
+  <div class="box"><b>DbFactory</b> — выбор SQL Server / SQLite по строке подключения</div>
+  <div class="box"><b>WorkshopDbContext</b> — 7 таблиц, 7 внешних ключей</div>
+  <div class="box"><b>SchemaUpgrade</b> — обновление схемы (ALTER TABLE, FK)</div>
+  <div class="box"><b>SeedData</b> — справочники и демонстрационные данные</div>
+</div>
+
+<div class="box" style="position:absolute;left:1050px;top:1330px;width:290px;background:#F1F5F9;border:2px solid #475569;border-radius:8px;padding:11px 13px;font-size:15.5px;">
+  <b>SQL Server</b> (localdb)\Ander<br>база <b>cursevork</b>
+</div>
+</div>
+</body>
+</html>

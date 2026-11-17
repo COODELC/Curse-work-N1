@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<style>
+ html,body{margin:0;padding:0;background:#fff;}
+ #root{position:relative;width:1240px;height:420px;font-family:"Segoe UI",Arial,sans-serif;background:#fff;}
+ .lay{position:absolute;top:16px;border-radius:10px;padding:12px 15px 14px 15px;box-sizing:border-box;width:280px;background:#F5F7FB;border:1.5px solid #6B7280;}
+ .lh{font-size:19px;font-weight:600;color:#1F2937;margin-bottom:8px;}
+ .box{font-size:17px;line-height:1.3;color:#1F2937;margin-bottom:4px;}
+ .box b{font-weight:600;}
+ .foot{position:absolute;left:18px;font-size:17px;color:#1F2937;line-height:1.35;}
+ .foot b{font-weight:600;}
+ svg{position:absolute;left:0;top:0;}
+</style>
+</head>
+<body>
+<div id="root">
+<svg width="1240" height="420">
+  <!-- Представление -> Правила -->
+  <line x1="303" y1="40" x2="317" y2="40" stroke="#111827" stroke-width="1.6"/>
+  <polygon points="321,40 313,36 313,44" fill="#111827"/>
+  <line x1="319" y1="66" x2="305" y2="66" stroke="#111827" stroke-width="1.6"/>
+  <polygon points="301,66 309,62 309,70" fill="#111827"/>
+  <!-- Правила -> Доступ к данным -->
+  <line x1="601" y1="40" x2="615" y2="40" stroke="#111827" stroke-width="1.6"/>
+  <polygon points="619,40 611,36 611,44" fill="#111827"/>
+  <line x1="617" y1="66" x2="603" y2="66" stroke="#111827" stroke-width="1.6"/>
+  <polygon points="599,66 607,62 607,70" fill="#111827"/>
+  <!-- Доступ к данным -> Хранение -->
+  <line x1="899" y1="40" x2="913" y2="40" stroke="#111827" stroke-width="1.6"/>
+  <polygon points="917,40 909,36 909,44" fill="#111827"/>
+  <line x1="915" y1="66" x2="901" y2="66" stroke="#111827" stroke-width="1.6"/>
+  <polygon points="897,66 905,62 905,70" fill="#111827"/>
+</svg>
+
+<div class="lay" style="left:21px;">
+  <div class="lh">Представление</div>
+  <div class="box"><b>Views</b></div>
+  <div class="box">XAML и события</div>
+</div>
+
+<div class="lay" style="left:321px;">
+  <div class="lh">Правила</div>
+  <div class="box"><b>Services</b></div>
+  <div class="box">Проверки и расчёты</div>
+</div>
+
+<div class="lay" style="left:621px;">
+  <div class="lh">Доступ к данным</div>
+  <div class="box"><b>Data и Models</b></div>
+  <div class="box">Контекст EF Core</div>
+</div>
+
+<div class="lay" style="left:921px;">
+  <div class="lh">Хранение</div>
+  <div class="box"><b>SQL Server</b></div>
+  <div class="box">Таблицы и ключи</div>
+</div>
+
+<div class="foot" style="top:270px;">
+  Вправо — вызов операции и запрос. Влево — данные, результат или ошибка.
+</div>
+<div class="foot" style="top:308px;">
+  Пример: Оформить заказ → <b>CreateOrderAsync</b> → <b>SaveChangesAsync</b> → таблицы <b>Orders</b> и <b>Item</b>
+</div>
+<div class="foot" style="top:346px;">
+  Слои проекта: <b>Views</b> → <b>Services</b> → <b>Data</b> → <b>SQL Server</b> (localdb)\Ander, база <b>cursevork</b>
+</div>
+</div>
+</body>
+</html>

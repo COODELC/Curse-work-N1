@@ -1,0 +1,360 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="Ktpt.CourseOrder.Views.MainWindow"
+        x:CompileBindings="False"
+        Title="Магазин автозапчастей"
+        Width="1240"
+        Height="800"
+        MinWidth="900"
+        MinHeight="600"
+        Background="{DynamicResource PageBackgroundBrush}">
+
+    <Window.Styles>
+
+        <Style Selector="Button">
+            <Setter Property="Padding" Value="14,8" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="FontWeight" Value="SemiBold" />
+            <Setter Property="Cursor" Value="Hand" />
+        </Style>
+
+        <Style Selector="Button.secondary">
+            <Setter Property="Background" Value="#FFFFFF" />
+            <Setter Property="Foreground" Value="#4F46E5" />
+            <Setter Property="BorderBrush" Value="#C7D2FE" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <Style Selector="Button.secondary:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#EEF2FF" />
+        </Style>
+
+        <Style Selector="Button.accent">
+            <Setter Property="Background" Value="{DynamicResource AccentGradientBrush}" />
+            <Setter Property="Foreground" Value="#FFFFFF" />
+        </Style>
+
+        <Style Selector="Button.cart">
+            <Setter Property="Background" Value="{DynamicResource SuccessGradientBrush}" />
+            <Setter Property="Foreground" Value="#FFFFFF" />
+        </Style>
+
+        <Style Selector="Button.cart:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="#34D399" />
+        </Style>
+
+        <Style Selector="TextBox">
+            <Setter Property="Padding" Value="12,10" />
+            <Setter Property="CornerRadius" Value="8" />
+            <Setter Property="FontSize" Value="14" />
+            <Setter Property="Background" Value="#FFFFFF" />
+            <Setter Property="Foreground" Value="#111827" />
+            <Setter Property="BorderBrush" Value="#C7D2FE" />
+            <Setter Property="BorderThickness" Value="1" />
+        </Style>
+
+        <Style Selector="ListBox">
+            <Setter Property="Background" Value="Transparent" />
+            <Setter Property="BorderThickness" Value="0" />
+            <Setter Property="Padding" Value="0" />
+        </Style>
+
+        <Style Selector="ListBoxItem">
+            <Setter Property="Padding" Value="0" />
+            <Setter Property="Margin" Value="0" />
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+
+        <Style Selector="ListBoxItem:pointerover /template/ ContentPresenter">
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+
+        <Style Selector="ListBoxItem:selected /template/ ContentPresenter">
+            <Setter Property="Background" Value="Transparent" />
+        </Style>
+
+    </Window.Styles>
+
+    <Grid RowDefinitions="Auto,Auto,*"
+          Margin="28,24,28,24">
+
+        <Border Grid.Row="0"
+                Background="{DynamicResource HeaderGradientBrush}"
+                CornerRadius="16"
+                Padding="24,20"
+                Margin="0,0,0,18">
+
+            <Grid ColumnDefinitions="*,Auto">
+
+                <StackPanel Grid.Column="0"
+                            VerticalAlignment="Center"
+                            Margin="0,0,24,0">
+
+                    <TextBlock Text="Магазин автозапчастей"
+                               FontSize="30"
+                               FontWeight="Bold"
+                               TextWrapping="Wrap"
+                               Foreground="#FFFFFF" />
+
+                    <TextBlock Text="{Binding StatusText}"
+                               Margin="0,8,0,0"
+                               FontSize="14"
+                               TextWrapping="Wrap"
+                               Foreground="#E0E7FF" />
+
+                </StackPanel>
+
+                <StackPanel Grid.Column="1"
+                            Spacing="10"
+                            VerticalAlignment="Center">
+
+                    <TextBlock x:Name="CurrentUserText"
+                               Text="Гость"
+                               FontSize="13"
+                               HorizontalAlignment="Right"
+                               Foreground="#E0E7FF" />
+
+                    <StackPanel Orientation="Horizontal"
+                                HorizontalAlignment="Right"
+                                Spacing="10">
+
+                        <Button x:Name="CartButton"
+                                Content="Корзина"
+                                Background="#FFFFFF"
+                                Foreground="#4F46E5"
+                                Command="{Binding OpenCartCommand}" />
+
+                        <Button x:Name="MyOrdersButton"
+                                Content="Мои заказы"
+                                Background="#33FFFFFF"
+                                Foreground="#FFFFFF"
+                                IsVisible="False"
+                                Command="{Binding OpenMyOrdersCommand}" />
+
+                        <Button x:Name="ManagerButton"
+                                Content="Заказы"
+                                Background="#33FFFFFF"
+                                Foreground="#FFFFFF"
+                                IsVisible="False"
+                                Command="{Binding OpenManagerOrdersCommand}" />
+
+                        <Button x:Name="AdminButton"
+                                Content="Управление"
+                                Background="#33FFFFFF"
+                                Foreground="#FFFFFF"
+                                IsVisible="False"
+                                Command="{Binding OpenAdminCommand}" />
+
+                        <Button x:Name="ProfileButton"
+                                Content="Профиль"
+                                Background="#33FFFFFF"
+                                Foreground="#FFFFFF"
+                                IsVisible="False"
+                                Click="ProfileButton_Click" />
+
+                        <Button x:Name="RolesButton"
+                                Content="Роли"
+                                Background="#33FFFFFF"
+                                Foreground="#FFFFFF"
+                                IsVisible="False"
+                                Click="RolesButton_Click" />
+
+                        <Button x:Name="AccountButton"
+                                Content="Вход / Регистрация"
+                                Background="#FBBF24"
+                                Foreground="#422006"
+                                Click="AccountButton_Click" />
+
+                        <Button x:Name="LogoutButton"
+                                Content="Выход"
+                                Background="#FB7185"
+                                Foreground="#FFFFFF"
+                                IsVisible="False"
+                                Click="LogoutButton_Click" />
+
+                    </StackPanel>
+                </StackPanel>
+
+            </Grid>
+        </Border>
+
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*,Auto,Auto,Auto"
+              Margin="0,0,0,18">
+
+            <TextBox Grid.Column="0"
+                     PlaceholderText="Поиск по названию или артикулу"
+                     Text="{Binding SearchText, Mode=TwoWay}"
+                     Margin="0,0,10,0" />
+
+            <ComboBox Grid.Column="1"
+                      MinWidth="220"
+                      PlaceholderText="Все категории"
+                      ItemsSource="{Binding Categories}"
+                      SelectedItem="{Binding SelectedCategory}"
+                      Margin="0,0,10,0" />
+
+            <Button Grid.Column="2"
+                    Classes="accent"
+                    Content="Поиск"
+                    Command="{Binding SearchCommand}"
+                    VerticalAlignment="Stretch"
+                    Margin="0,0,10,0" />
+
+            <Button Grid.Column="3"
+                    Classes="secondary"
+                    Content="Сбросить"
+                    Command="{Binding ResetSearchCommand}"
+                    VerticalAlignment="Stretch" />
+
+        </Grid>
+
+        <ListBox Grid.Row="2"
+                 x:Name="CatalogList"
+                 ItemsSource="{Binding Products}"
+                 ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                 ScrollViewer.VerticalScrollBarVisibility="Auto">
+
+            <ListBox.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal" />
+                </ItemsPanelTemplate>
+            </ListBox.ItemsPanel>
+
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+
+                    <Border Width="340"
+                            Margin="0,0,18,18"
+                            Padding="0"
+                            CornerRadius="14"
+                            BorderThickness="1"
+                            BorderBrush="{DynamicResource BorderBrush}"
+                            Background="{DynamicResource CardBackgroundBrush}">
+
+                        <StackPanel Spacing="0">
+
+                            <Border Height="6"
+                                    CornerRadius="13,13,0,0"
+                                    Background="{Binding Name_Category, Converter={StaticResource CategoryBrushConverter}}" />
+
+                            <StackPanel Spacing="12" Margin="20">
+
+                                <Border Height="180"
+                                        CornerRadius="10"
+                                        ClipToBounds="True"
+                                        Background="#F1F5F9">
+
+                                    <Grid>
+                                        <Image Source="{Binding ImagePath, Converter={StaticResource ImagePathConverter}}"
+                                               Stretch="UniformToFill"
+                                               RenderOptions.BitmapInterpolationMode="HighQuality" />
+                                    </Grid>
+
+                                </Border>
+
+                                <TextBlock Text="{Binding Name_Item}"
+                                           FontSize="19"
+                                           FontWeight="SemiBold"
+                                           TextWrapping="Wrap"
+                                           Foreground="{DynamicResource PrimaryTextBrush}" />
+
+                                <Border Padding="8,4"
+                                        CornerRadius="6"
+                                        Background="#EEF2FF"
+                                        HorizontalAlignment="Left">
+
+                                    <TextBlock Text="{Binding NameArticule, StringFormat='Артикул: {0}'}"
+                                               FontSize="12"
+                                               TextWrapping="Wrap"
+                                               Foreground="{DynamicResource AccentBrush}" />
+
+                                </Border>
+
+                                <StackPanel Spacing="6">
+
+                                    <Border Padding="10,5"
+                                            CornerRadius="7"
+                                            HorizontalAlignment="Left"
+                                            Background="{Binding Name_Category, Converter={StaticResource CategoryBrushConverter}}">
+
+                                        <TextBlock Text="{Binding Name_Category, StringFormat='Категория: {0}'}"
+                                                   FontSize="13"
+                                                   TextWrapping="Wrap"
+                                                   Foreground="#FFFFFF" />
+
+                                    </Border>
+
+                                    <TextBlock Text="{Binding Price, StringFormat='Цена: {0:N2} руб.'}"
+                                               FontSize="20"
+                                               FontWeight="Bold"
+                                               Foreground="{DynamicResource AccentBrush}" />
+
+                                    <TextBlock Text="{Binding Quantity, StringFormat='В наличии: {0} шт.'}"
+                                               FontSize="13"
+                                               Foreground="{DynamicResource SecondaryTextBrush}" />
+
+                                </StackPanel>
+
+                                <Button Background="Transparent"
+                                        BorderThickness="0"
+                                        Padding="0"
+                                        HorizontalAlignment="Stretch"
+                                        HorizontalContentAlignment="Stretch"
+                                        Command="{Binding $parent[ListBox].DataContext.OpenReviewsCommand}"
+                                        CommandParameter="{Binding}">
+
+                                    <StackPanel Spacing="4">
+
+                                        <TextBlock Text="{Binding Reviews.Count, StringFormat='Отзывов: {0} — показать все'}"
+                                                   FontSize="13"
+                                                   FontWeight="SemiBold"
+                                                   Foreground="{DynamicResource AccentBrush}" />
+
+                                        <StackPanel Spacing="1">
+
+                                            <TextBlock Text="{Binding PreviewReview.Author}"
+                                                       FontSize="12"
+                                                       FontWeight="SemiBold"
+                                                       Foreground="{DynamicResource InfoBrush}" />
+
+                                            <TextBlock Text="{Binding PreviewReview.Text}"
+                                                       FontSize="12"
+                                                       TextWrapping="Wrap"
+                                                       Foreground="{DynamicResource SecondaryTextBrush}" />
+
+                                        </StackPanel>
+
+                                    </StackPanel>
+                                </Button>
+
+                                <Button Classes="secondary"
+                                        Content="Описание товара"
+                                        HorizontalAlignment="Stretch"
+                                        Command="{Binding $parent[ListBox].DataContext.OpenProductDetailsCommand}"
+                                        CommandParameter="{Binding}" />
+
+                                <Button Classes="cart"
+                                        Content="Добавить в корзину"
+                                        HorizontalAlignment="Stretch"
+                                        Command="{Binding $parent[ListBox].DataContext.AddToCartCommand}"
+                                        CommandParameter="{Binding}" />
+
+                                <Button Classes="secondary"
+                                        Content="Оставить отзыв"
+                                        HorizontalAlignment="Stretch"
+                                        Command="{Binding $parent[ListBox].DataContext.OpenReviewCommand}"
+                                        CommandParameter="{Binding}" />
+
+                            </StackPanel>
+                        </StackPanel>
+                    </Border>
+
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+        </ListBox>
+
+    </Grid>
+
+</Window>
